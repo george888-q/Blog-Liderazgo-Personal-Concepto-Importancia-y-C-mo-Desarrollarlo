@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Allura&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes twinkle2 {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes twinkle3 {
+            0%, 100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            33% {
+                transform: translateY(-10px) translateX(5px);
+            }
+            66% {
+                transform: translateY(5px) translateX(-5px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            background-color: #E6D5F7;
+            position: relative;
+            color: #2C2C2C;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .stars-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .stars-layer-1 {
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239B7BC8' fill-opacity='0.6'%3E%3Cpath d='M30 5l3.09 9.27h9.82l-7.95 5.77 3.09 9.27L30 23.54l-7.05 5.77 3.09-9.27-7.95-5.77h9.82z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 60px 60px;
+            background-position: 0 0;
+            background-attachment: fixed;
+            animation: twinkle 3s ease-in-out infinite, float 20s ease-in-out infinite;
+        }
+
+        .stars-layer-2 {
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238B6FA8' fill-opacity='0.5'%3E%3Cpath d='M20 3l2.06 6.18h6.55l-5.3 3.85 2.06 6.18L20 15.69l-4.7 3.85 2.06-6.18-5.3-3.85h6.55z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 40px 40px;
+            background-position: 30px 30px;
+            background-attachment: fixed;
+            animation: twinkle2 4s ease-in-out infinite, float 25s ease-in-out infinite reverse;
+        }
+
+        .stars-layer-3 {
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237B5FA8' fill-opacity='0.7'%3E%3Cpath d='M40 7l4.12 12.36h13.09l-10.6 7.69 4.12 12.36L40 31.38l-9.4 7.69 4.12-12.36-10.6-7.69h13.09z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 80px 80px;
+            background-position: 20px 20px;
+            background-attachment: fixed;
+            animation: twinkle3 5s ease-in-out infinite, float 30s ease-in-out infinite;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeInDown 0.8s ease-out;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header:hover {
+            box-shadow: 0 4px 20px rgba(107, 76, 147, 0.2);
+            transform: translateY(-2px);
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #6B4C93;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #6B4C93, #8B6FA8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 1s ease-out, pulse 3s ease-in-out infinite 1s;
+        }
+
+        header h1:hover {
+            letter-spacing: 4px;
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .content {
+            background-color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(107, 76, 147, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .content:hover::before {
+            left: 100%;
+        }
+
+        .content:hover {
+            box-shadow: 0 8px 30px rgba(107, 76, 147, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: #333333;
+            text-align: justify;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 400;
+            line-height: 2;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .content p:hover {
+            padding-left: 10px;
+            border-left: 3px solid #E6D5F7;
+        }
+
+        .content h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #6B4C93;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #E6D5F7;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            opacity: 0;
+            animation: slideInLeft 0.6s ease-out forwards;
+            position: relative;
+            z-index: 5;
+            letter-spacing: 0.5px;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6B4C93, #8B6FA8);
+            transition: width 0.4s ease;
+        }
+
+        .content h2:hover::after {
+            width: 100%;
+        }
+
+        .content h2:hover {
+            color: #8B6FA8;
+            transform: translateX(10px) scale(1.02);
+            text-shadow: 2px 2px 4px rgba(107, 76, 147, 0.2);
+        }
+
+        .content h3 {
+            font-family: 'Dancing Script', cursive;
+            color: #8B6FA8;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .content ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333333;
+        }
+
+        .content li {
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            line-height: 1.9;
+            transition: all 0.3s ease;
+            padding-left: 0.5rem;
+            position: relative;
+            list-style: none;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .content li::before {
+            content: '▸';
+            color: #6B4C93;
+            font-weight: bold;
+            position: absolute;
+            left: -1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .content li:hover {
+            transform: translateX(10px);
+            color: #6B4C93;
+            font-weight: 500;
+        }
+
+        .content li:hover::before {
+            color: #8B6FA8;
+            transform: scale(1.3);
+        }
+
+        .content ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .content .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #6B4C93;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .content .section-title:hover {
+            color: #8B6FA8;
+            transform: translateX(5px);
+        }
+
+        .content .section-title {
+            transition: all 0.3s ease;
+        }
+
+        .video-container {
+            margin: 2rem 0;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            background-color: #000;
+            cursor: pointer;
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(107, 76, 147, 0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .video-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+        }
+
+        .video-fallback-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .video-container:hover .video-fallback-overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .video-play-button-large {
+            position: relative;
+            z-index: 10;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container:hover .video-play-button-large {
+            background: rgba(255, 0, 0, 1);
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+        }
+
+        .video-play-button-large::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 35px solid white;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            margin-left: 8px;
+        }
+
+        .video-error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 5;
+            background: rgba(107, 76, 147, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .video-title {
+            font-family: 'Dancing Script', cursive;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #6B4C93;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .video-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .video-link a {
+            color: #6B4C93;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid #6B4C93;
+            border-radius: 25px;
+            background: linear-gradient(135deg, transparent, transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-link a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #6B4C93, #8B6FA8);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .video-link a:hover {
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(107, 76, 147, 0.4);
+            border-color: #8B6FA8;
+        }
+
+        .video-link a:hover::before {
+            left: 0;
+        }
+
+        .content p {
+            transition: color 0.3s ease;
+        }
+
+        .content p:hover {
+            color: #444444;
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            text-align: center;
+            color: #6B4C93;
+            font-size: 1.2rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        footer:hover {
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 -4px 15px rgba(107, 76, 147, 0.2);
+        }
+
+        footer p {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6B4C93, #8B6FA8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(107, 76, 147, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 6px 20px rgba(107, 76, 147, 0.6);
+            animation: bounce 0.6s ease;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(107, 76, 147, 0.1), rgba(139, 111, 168, 0.1));
+            padding: 1.5rem;
+            border-left: 4px solid #6B4C93;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(107, 76, 147, 0.2);
+        }
+
+        .content-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 15px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            z-index: 10;
+        }
+
+        .content-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-image:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(107, 76, 147, 0.3);
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            z-index: 10;
+            clear: both;
+        }
+
+        .image-caption {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            color: #666;
+            font-style: italic;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .image-left {
+            float: left;
+            margin: 1rem 2rem 2rem 0;
+            max-width: 300px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .image-right {
+            float: right;
+            margin: 1rem 0 2rem 2rem;
+            max-width: 300px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .image-left,
+            .image-right {
+                float: none;
+                margin: 1.5rem auto;
+                display: block;
+            }
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content h3 {
+                font-size: 1.2rem;
+            }
+
+            .content ul {
+                margin-left: 1.5rem;
+            }
+
+            .content li {
+                font-size: 1rem;
+            }
+
+            .content .section-title {
+                font-size: 1.1rem;
+            }
+
+            .video-container {
+                margin: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .content {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-layer stars-layer-1"></div>
+    <div class="stars-layer stars-layer-2"></div>
+    <div class="stars-layer stars-layer-3"></div>
+    
+    <header>
+        <h1>Mi Blog</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>Liderazgo Personal: Concepto, Importancia y Cómo Desarrollarlo</h2>
+            
+            <p>El liderazgo personal es la capacidad de una persona para dirigir su propia vida de manera consciente, estratégica y orientada a resultados. A diferencia del liderazgo tradicional —que se enfoca en dirigir equipos o influir en otros—, el liderazgo personal comienza desde adentro: la autogestión, la disciplina, la claridad de metas y la responsabilidad sobre las propias decisiones.</p>
+            
+            <p>En pocas palabras, significa ser el líder de ti mismo antes de intentar liderar a los demás.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Liderazgo personal y desarrollo" class="content-image">
+                <p class="image-caption">El liderazgo personal comienza con el autoconocimiento</p>
+            </div>
+            
+            <h2>1. ¿Qué es el Liderazgo Personal?</h2>
+            
+            <p>El liderazgo personal es un proceso en el cual una persona desarrolla habilidades y actitudes para guiar su conducta, emociones y decisiones hacia la realización de sus propósitos. Involucra:</p>
+            
+            <ul>
+                <li><strong>Autoconocimiento:</strong> saber quién eres, tus valores, fortalezas y debilidades.</li>
+                <li><strong>Autodisciplina:</strong> capacidad de actuar incluso cuando no hay motivación.</li>
+                <li><strong>Gestión emocional:</strong> controlar tus emociones y evitar decisiones impulsivas.</li>
+                <li><strong>Proactividad:</strong> tomar la iniciativa en lugar de esperar a que las cosas pasen.</li>
+                <li><strong>Claridad de metas:</strong> tener objetivos definidos y actuar acorde a ellos.</li>
+                <li><strong>Responsabilidad personal:</strong> aceptar consecuencias y aprender de los errores.</li>
+            </ul>
+            
+            <p>El liderazgo personal es la base de la productividad, el éxito profesional y el crecimiento personal.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Metas y objetivos" class="content-image image-right">
+            </div>
+            
+            <h2>2. Importancia del Liderazgo Personal</h2>
+            
+            <p>El liderazgo personal es fundamental porque proporciona dirección, estabilidad emocional y efectividad en la vida diaria. Algunos beneficios clave son:</p>
+            
+            <p class="section-title">Aumenta la confianza y la autoestima</p>
+            <p>Cuando una persona toma decisiones alineadas con sus valores, siente mayor seguridad y claridad.</p>
+            
+            <p class="section-title">Mejora la productividad</p>
+            <p>Las personas con liderazgo personal tienen metas claras y saben priorizar.</p>
+            
+            <p class="section-title">Fortalece la inteligencia emocional</p>
+            <p>Controlar las emociones permite manejar mejor el estrés, los conflictos y la presión.</p>
+            
+            <p class="section-title">Impulsa el éxito académico y profesional</p>
+            <p>Quien sabe dirigirse a sí mismo puede liderar proyectos, resolver problemas y destacar.</p>
+            
+            <p class="section-title">Ayuda a construir hábitos sólidos</p>
+            <p>La disciplina es la base para mejorar en cualquier área de la vida.</p>
+            
+            <p class="section-title">Promueve relaciones más sanas</p>
+            <p>Cuando una persona se conoce bien, comunica mejor, establece límites y evita comportamientos dañinos.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Componentes del liderazgo" class="content-image">
+                <p class="image-caption">Los componentes del liderazgo personal trabajan en conjunto</p>
+            </div>
+            
+            <h2>3. Componentes del Liderazgo Personal</h2>
+            
+            <p>Para entenderlo completamente, se puede dividir en varios elementos esenciales:</p>
+            
+            <p class="section-title">a) Autoconciencia</p>
+            <p>Comprender tus emociones, pensamientos, comportamientos y cómo afectan tu vida diaria.</p>
+            
+            <p class="section-title">b) Visión personal</p>
+            <p>Saber qué quieres lograr y hacia dónde te diriges. Esto incluye propósito, sueños y aspiraciones.</p>
+            
+            <p class="section-title">c) Valores</p>
+            <p>Los principios que guían tus decisiones: respeto, responsabilidad, honestidad, disciplina, etc.</p>
+            
+            <p class="section-title">d) Metas y planificación</p>
+            <p>Transformar la visión en objetivos medibles, realistas y alcanzables.</p>
+            
+            <p class="section-title">e) Gestión del tiempo</p>
+            <p>Saber priorizar y organizar actividades para evitar el desgaste.</p>
+            
+            <p class="section-title">f) Autocontrol</p>
+            <p>Evitar acciones impulsivas y controlar reacciones emocionales.</p>
+            
+            <p class="section-title">g) Responsabilidad</p>
+            <p>Aceptar que tú eres el principal responsable de tu vida y tu futuro.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Habilidades de liderazgo" class="content-image image-left">
+            </div>
+            
+            <h2>4. Habilidades Clave del Liderazgo Personal</h2>
+            
+            <p>Estas habilidades fortalecen la capacidad de autoliderarte:</p>
+            
+            <ul>
+                <li>Pensamiento crítico</li>
+                <li>Comunicación asertiva</li>
+                <li>Resiliencia</li>
+                <li>Motivación interna</li>
+                <li>Manejo del estrés</li>
+                <li>Toma de decisiones</li>
+                <li>Trabajo ético</li>
+                <li>Adaptabilidad y flexibilidad</li>
+            </ul>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80" alt="Desarrollo personal" class="content-image">
+                <p class="image-caption">El desarrollo del liderazgo personal es un proceso continuo</p>
+            </div>
+            
+            <h2>5. Cómo Desarrollar el Liderazgo Personal</h2>
+            
+            <p>Aquí algunos pasos prácticos para potenciarlo:</p>
+            
+            <p class="section-title">1. Define tus metas personales y profesionales</p>
+            <p>Sin un destino claro, es imposible liderar tu vida.</p>
+            
+            <p class="section-title">2. Identifica tus fortalezas y debilidades</p>
+            <p>Esto permite usar tus recursos internos de forma estratégica.</p>
+            
+            <p class="section-title">3. Crea hábitos productivos</p>
+            <p>Leer, estudiar, ejercitarte, planificar el día y descansar bien ayudan a mantener un ritmo eficiente.</p>
+            
+            <p class="section-title">4. Practica la autocompasión y la autoevaluación</p>
+            <p>No se trata de ser perfecto; se trata de mejorar continuamente.</p>
+            
+            <p class="section-title">5. Rodéate de personas positivas</p>
+            <p>Las relaciones influyen directamente en la forma en que lidias con problemas y tomas decisiones.</p>
+            
+            <p class="section-title">6. Aprende a decir NO</p>
+            <p>El liderazgo personal también es proteger tu tiempo y energía.</p>
+            
+            <p class="section-title">7. Haz seguimiento a tus metas</p>
+            <p>Revisa mensualmente tus avances y ajusta lo que sea necesario.</p>
+            
+            <h2>6. Liderazgo Personal en la Vida Académica y Profesional</h2>
+            
+            <p>En el ámbito estudiantil y laboral, el liderazgo personal se manifiesta en:</p>
+            
+            <ul>
+                <li>Entregar trabajos a tiempo</li>
+                <li>Administrar bien el tiempo de estudio</li>
+                <li>Mantener relaciones saludables con compañeros</li>
+                <li>Resolver conflictos sin generar problemas</li>
+                <li>Tomar la iniciativa en proyectos</li>
+                <li>Ser una persona confiable y organizada</li>
+                <li>Cumplir normas y demostrar ética</li>
+            </ul>
+            
+            <p>No necesitas un cargo de jefatura para ser un líder: el liderazgo comienza en tus hábitos diarios.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Trabajo en equipo y liderazgo" class="content-image image-right">
+            </div>
+            
+            <h2>7. Ejemplos Concretos de Liderazgo Personal</h2>
+            
+            <ul>
+                <li>Un estudiante que decide estudiar un poco cada día para no acumular tareas.</li>
+                <li>Una persona que establece límites en sus relaciones para proteger su salud mental.</li>
+                <li>Empleados que se preparan constantemente para mejorar en sus puestos.</li>
+                <li>Alguien que toma una mala decisión, la reconoce y trabaja para corregirla.</li>
+            </ul>
+            
+            <h2>8. Conclusión</h2>
+            
+            <p>El liderazgo personal es una habilidad esencial para cualquier persona que desee alcanzar metas, crecer emocionalmente y construir una vida satisfactoria. No se trata de controlar a los demás, sino de controlarte a ti mismo, tomar decisiones inteligentes y actuar con coherencia, disciplina y responsabilidad.</p>
+            
+            <p>Es una habilidad que se desarrolla con práctica diaria; mientras más te conoces, mejor puedes liderarte.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="Éxito y crecimiento personal" class="content-image">
+                <p class="image-caption">El liderazgo personal te lleva hacia el éxito y la realización</p>
+            </div>
+            
+            <h2>Videos Relacionados</h2>
+            
+            <p class="video-title">Liderazgo personal con César Piqueras</p>
+            <a href="https://www.youtube.com/watch?v=VHs-0NWl82A" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div class="video-container">
+                    <div class="video-fallback" style="background-image: url('https://img.youtube.com/vi/VHs-0NWl82A/maxresdefault.jpg');">
+                        <div class="video-fallback-overlay"></div>
+                        <div class="video-play-button-large"></div>
+                    </div>
+                </div>
+            </a>
+            <p class="video-link">
+                <a href="https://www.youtube.com/watch?v=VHs-0NWl82A" target="_blank">Ver video en YouTube</a>
+            </p>
+            
+            <p class="video-title">El liderazgo según Henry Ford</p>
+            <a href="https://www.youtube.com/watch?v=UBMYA0ZjtxU" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div class="video-container">
+                    <div class="video-fallback" style="background-image: url('https://img.youtube.com/vi/UBMYA0ZjtxU/maxresdefault.jpg');">
+                        <div class="video-fallback-overlay"></div>
+                        <div class="video-play-button-large"></div>
+                    </div>
+                </div>
+            </a>
+            <p class="video-link">
+                <a href="https://www.youtube.com/watch?v=UBMYA0ZjtxU" target="_blank">Ver video en YouTube</a>
+            </p>
+            
+            <p class="video-title">Liderazgo personal</p>
+            <div class="video-container">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/tHLTsHCNW-4" 
+                    title="Liderazgo personal" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-link">
+                <a href="https://www.youtube.com/watch?v=tHLTsHCNW-4" target="_blank">Ver video en YouTube</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Merary Barría 8-1043-2438</p>
+    </footer>
+
+    <button class="scroll-to-top" onclick="scrollToTop()" aria-label="Volver arriba">↑</button>
+
+    <script>
+        // Botón scroll to top
+        const scrollToTopBtn = document.querySelector('.scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animaciones
+        document.querySelectorAll('.content h2, .content p, .content li, .video-container, .content-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Animación específica para imágenes
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.content-image').forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        // Efecto parallax suave en el header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (scrolled > lastScroll && scrolled > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScroll = scrolled;
+        });
+
+        // Efecto de contador en números (si los hay)
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Efecto de brillo en elementos al pasar el mouse
+        document.querySelectorAll('.content h2, .content .section-title').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.textShadow = '2px 2px 8px rgba(107, 76, 147, 0.4)';
+            });
+            element.addEventListener('mouseleave', function() {
+                this.style.textShadow = '';
+            });
+        });
+
+        // Efecto de click en las listas
+        document.querySelectorAll('.content li').forEach(li => {
+            li.addEventListener('click', function() {
+                this.style.transform = 'translateX(15px) scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
+
