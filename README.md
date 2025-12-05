@@ -24,10 +24,6 @@ Este blog explora el concepto de liderazgo personal, su importancia y las formas
 - Google Fonts (Dancing Script)
 - YouTube Embeds
 
-## Autor
-
-Merary Barría 8-1043-2438
-
 ## Ver el Blog
 
 El blog está disponible en GitHub Pages. Para verlo, activa GitHub Pages en la configuración del repositorio y selecciona la rama `main` como fuente.
